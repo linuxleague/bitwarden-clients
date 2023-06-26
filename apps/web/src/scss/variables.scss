@@ -108,7 +108,8 @@ $darkDarkBlue2: #1f242e;
 $darkInputColor: $white;
 $darkInputPlaceholderColor: $darkGrey1;
 
-$code-color: #d70063;
+$code-color: #c01176;
+$code-color-dark: #f08dc7;
 
 $themes: (
   light: (
@@ -278,7 +279,7 @@ $themes: (
     calloutBackground: $darkBlue2,
     calloutColor: $white,
     cdkDraggingBackground: $darkDarkBlue1,
-    codeColor: #fd6dc0,
+    codeColor: $code-color-dark,
     dropdownBackground: $darkDarkBlue1,
     dropdownHover: rgba(255, 255, 255, 0.03),
     dropdownTextColor: $white,

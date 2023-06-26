@@ -60,7 +60,9 @@ $solarizedDarkBlue: #268bd2;
 $solarizedDarkCyan: #2aa198;
 $solarizedDarkGreen: #859900;
 
-$code-color: #d70063;
+$code-color: #c01176;
+$code-color-dark: #f08dc7;
+$code-color-nord: #ffa1cc;
 
 $themes: (
   light: (
@@ -186,7 +188,7 @@ $themes: (
       hue-rotate(184deg) brightness(87%) contrast(93%),
     webkitCalendarPickerHoverFilter: brightness(0) saturate(100%) invert(100%) sepia(0%)
       saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%),
-    codeColor: #fd6dc0,
+    codeColor: $code-color-dark,
   ),
   nord: (
     textColor: $nord5,
@@ -248,7 +250,7 @@ $themes: (
     // has no hover so use same color
     webkitCalendarPickerHoverFilter: brightness(0) saturate(100%) invert(94%) sepia(5%)
       saturate(454%) hue-rotate(185deg) brightness(93%) contrast(96%),
-    codeColor: #ffa1cc,
+    codeColor: $code-color-nord,
   ),
   solarizedDark: (
     textColor: $solarizedDarkBase2,
@@ -309,7 +311,7 @@ $themes: (
       hue-rotate(138deg) brightness(92%) contrast(90%),
     webkitCalendarPickerHoverFilter: brightness(0) saturate(100%) invert(94%) sepia(10%)
       saturate(462%) hue-rotate(345deg) brightness(103%) contrast(87%),
-    codeColor: #fd6dc0,
+    codeColor: $code-color-dark,
   ),
 );
 

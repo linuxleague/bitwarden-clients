@@ -236,7 +236,7 @@ export class WindowMain {
       case "light":
         return "#ededed";
       case "dark":
-        return "#3c424e";
+        return "#2f343d";
       case "nord":
         return "#3b4252";
     }

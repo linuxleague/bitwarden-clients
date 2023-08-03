@@ -848,8 +848,21 @@ function fill(document: Document, fillScript: AutofillScript) {
 
   // Detect if within an iframe, and the iframe is sandboxed
   function isSandboxed() {
-    // self.origin is 'null' if inside a frame with sandboxed csp or iframe tag
-    return self.origin == null || self.origin === "null";
+    let isSandboxed = false;
+    isSandboxed = self.origin == null || self.origin === "null";
+
+    if (!isSandboxed) {
+      // self.origin is 'null' if inside a frame with sandboxed csp or iframe tag
+      try {
+        isSandboxed = !!window.frameElement?.hasAttribute("sandbox");
+      } catch {
+        if (document.domain === "") {
+          isSandboxed = true;
+        }
+      }
+    }
+
+    return isSandboxed;
   }
 
   function doFill(fillScript: AutofillScript) {

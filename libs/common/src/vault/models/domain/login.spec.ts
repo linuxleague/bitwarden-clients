@@ -122,7 +122,7 @@ describe("Login DTO", () => {
           userHandle: "userHandle",
           counter: "counter",
           rpName: "rpName",
-          userName: "userName",
+          userDisplayName: "userDisplayName",
           origin: "origin",
         },
       });
@@ -143,7 +143,7 @@ describe("Login DTO", () => {
           userHandle: "userHandle_fromJSON",
           counter: "counter_fromJSON",
           rpName: "rpName_fromJSON",
-          userName: "userName_fromJSON",
+          userDisplayName: "userDisplayName_fromJSON",
           origin: "origin_fromJSON",
         },
       });

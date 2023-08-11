@@ -1,3 +1,4 @@
+import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 
 import AutofillField from "../../models/autofill-field";
@@ -37,6 +38,11 @@ export abstract class AutofillService {
   doAutoFillOnTab: (
     pageDetails: PageDetail[],
     tab: chrome.tabs.Tab,
+    fromCommand: boolean
+  ) => Promise<string>;
+  doAutoFillNonLoginActiveTab: (
+    pageDetails: PageDetail[],
+    cipherType: CipherType,
     fromCommand: boolean
   ) => Promise<string>;
   doAutoFillActiveTab: (pageDetails: PageDetail[], fromCommand: boolean) => Promise<string>;

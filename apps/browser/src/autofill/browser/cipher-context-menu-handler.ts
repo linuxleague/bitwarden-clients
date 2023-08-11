@@ -163,7 +163,10 @@ export class CipherContextMenuHandler {
       return;
     }
 
-    const ciphers = await this.cipherService.getAllDecryptedForUrl(url);
+    const ciphers = await this.cipherService.getAllDecryptedForUrl(url, [
+      CipherType.Card,
+      CipherType.Identity,
+    ]);
     ciphers.sort((a, b) => this.cipherService.sortCiphersByLastUsedThenName(a, b));
 
     if (ciphers.length === 0) {
@@ -179,14 +182,14 @@ export class CipherContextMenuHandler {
   private async updateForCipher(url: string, cipher: CipherView) {
     if (
       cipher == null ||
-      cipher.type !== CipherType.Login ||
+      ![CipherType.Login, CipherType.Card, CipherType.Identity].includes(cipher.type) ||
       cipher.reprompt !== CipherRepromptType.None
     ) {
       return;
     }
 
     let title = cipher.name;
-    if (!Utils.isNullOrEmpty(title)) {
+    if (!Utils.isNullOrEmpty(title) && cipher.login?.username) {
       title += ` (${cipher.login.username})`;
     }
 

@@ -21,9 +21,9 @@ export class Fido2KeyExport {
 
   static toView(req: Fido2KeyExport, view = new Fido2KeyView()) {
     view.nonDiscoverableId = req.nonDiscoverableId;
-    // view.keyType = req.keyType;
-    // view.keyAlgorithm = req.keyAlgorithm;
-    // view.keyCurve = req.keyCurve;
+    view.keyType = req.keyType as "public-key";
+    view.keyAlgorithm = req.keyAlgorithm as "ECDSA";
+    view.keyCurve = req.keyCurve as "P-256";
     view.keyValue = req.keyValue;
     view.rpId = req.rpId;
     view.userHandle = req.userHandle;
@@ -56,8 +56,6 @@ export class Fido2KeyExport {
   rpId: string;
   userHandle: string;
   counter: string;
-
-  // Extras
   rpName: string;
   userName: string;
 

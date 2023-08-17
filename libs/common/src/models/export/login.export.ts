@@ -35,10 +35,7 @@ export class LoginExport {
     domain.username = req.username != null ? new EncString(req.username) : null;
     domain.password = req.password != null ? new EncString(req.password) : null;
     domain.totp = req.totp != null ? new EncString(req.totp) : null;
-    if (req.fido2Key != null) {
-      domain.fido2Key = Fido2KeyExport.toDomain(req.fido2Key);
-    }
-
+    //left out fido2Key for now
     return domain;
   }
 
@@ -46,7 +43,7 @@ export class LoginExport {
   username: string;
   password: string;
   totp: string;
-  fido2Key: Fido2KeyExport;
+  fido2Key: Fido2KeyExport = null;
 
   constructor(o?: LoginView | LoginDomain) {
     if (o == null) {

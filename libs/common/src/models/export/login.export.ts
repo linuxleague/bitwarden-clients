@@ -59,11 +59,7 @@ export class LoginExport {
     }
 
     if (o.fido2Key != null) {
-      if (o instanceof LoginView) {
-        this.fido2Key = new Fido2KeyExport(o.fido2Key);
-      } else {
-        this.fido2Key = new Fido2KeyExport(o.fido2Key);
-      }
+      this.fido2Key = new Fido2KeyExport(o.fido2Key);
     }
 
     if (o instanceof LoginView) {

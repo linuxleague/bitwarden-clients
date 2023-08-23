@@ -77,7 +77,9 @@ class BrowserPopoutWindowService implements BrowserPopupWindowServiceInterface {
   private async closeSingleActionPopout(popoutKey: string) {
     const tabId = this.singleActionPopoutTabIds[popoutKey];
 
-    tabId && (await BrowserApi.removeTab(tabId));
+    if (tabId) {
+        await BrowserApi.removeTab(tabId);
+    }
     this.singleActionPopoutTabIds[popoutKey] = null;
   }
 }

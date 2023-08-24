@@ -1512,12 +1512,6 @@
   "permanentlyDeletedItem": {
     "message": "Permanent geskrapte item"
   },
-  "restoreItem": {
-    "message": "Stel item terug"
-  },
-  "restoreItemConfirmation": {
-    "message": "Is u seker u wil hierdie item terugstel?"
-  },
   "restoredItem": {
     "message": "Teruggestelde item"
   },
@@ -2252,21 +2246,19 @@
   "windowsBiometricUpdateWarningTitle": {
     "message": "Aanbevole bywerking van instellings"
   },
-  "region": {
-    "message": "Streek"
+  "loggingInOn": {
+    "message": "Logging in on"
   },
-  "eu": {
-    "message": "EU",
-    "description": "European Union"
+  "usDomain": {
+    "message": "bitwarden.com"
   },
-  "us": {
-    "message": "VS",
-    "description": "United States"
+  "euDomain": {
+    "message": "bitwarden.eu"
   },
   "selfHosted": {
     "message": "Selghehuisves"
   },
   "accessDenied": {
-    "message": "Access denied. You do not have permission to view this page."
+    "message": "Toegang geweier. U het nie toestemming om hierdie blad te sien nie."
   }
 }

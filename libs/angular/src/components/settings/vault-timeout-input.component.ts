@@ -15,6 +15,14 @@ import { Policy } from "@bitwarden/common/admin-console/models/domain/policy";
 import { VaultTimeoutAction } from "@bitwarden/common/enums/vault-timeout-action.enum";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
+interface VaultTimeoutFormValue {
+  vaultTimeout: number | null;
+  custom: {
+    hours: number | null;
+    minutes: number | null;
+  };
+}
+
 @Directive()
 export class VaultTimeoutInputComponent
   implements ControlValueAccessor, Validator, OnInit, OnDestroy, OnChanges
@@ -70,11 +78,13 @@ export class VaultTimeoutInputComponent
         this.applyVaultTimeoutPolicy();
       });
 
-    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
-      if (this.onChange) {
-        this.onChange(this.getVaultTimeout(value));
-      }
-    });
+    this.form.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: VaultTimeoutFormValue) => {
+        if (this.onChange) {
+          this.onChange(this.getVaultTimeout(value));
+        }
+      });
 
     // Assign the previous value to the custom fields
     this.form.controls.vaultTimeout.valueChanges
@@ -84,12 +94,19 @@ export class VaultTimeoutInputComponent
       )
       .subscribe((_) => {
         const current = Math.max(this.form.value.vaultTimeout, 0);
-        this.form.patchValue({
-          custom: {
-            hours: Math.floor(current / 60),
-            minutes: current % 60,
+
+        // This cannot emit an event b/c it would cause form.valueChanges to fire again
+        // and we are already handling that above so just silently update
+        // custom fields when vaultTimeout changes to a non-custom value
+        this.form.patchValue(
+          {
+            custom: {
+              hours: Math.floor(current / 60),
+              minutes: current % 60,
+            },
           },
-        });
+          { emitEvent: false }
+        );
       });
 
     this.canLockVault$ = this.vaultTimeoutSettingsService
@@ -113,7 +130,7 @@ export class VaultTimeoutInputComponent
     }
   }
 
-  getVaultTimeout(value: any) {
+  getVaultTimeout(value: VaultTimeoutFormValue) {
     if (value.vaultTimeout !== VaultTimeoutInputComponent.CUSTOM_VALUE) {
       return value.vaultTimeout;
     }

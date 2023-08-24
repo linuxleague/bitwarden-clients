@@ -90,11 +90,11 @@ describe("CipherContextMenuHandler", () => {
         name: "Test Cipher",
         login: { username: "Test Username" },
       };
-      const passwordProtectedCipher = {
+      const repromptCipher = {
         id: "6",
         type: CipherType.Login,
         reprompt: CipherRepromptType.Password,
-        name: "Test Password Protected Cipher",
+        name: "Test Reprompt Cipher",
         login: { username: "Test Username" },
       };
 
@@ -103,7 +103,7 @@ describe("CipherContextMenuHandler", () => {
         undefined, // invalid cipher
         { type: CipherType.Card }, // invalid cipher
         realCipher, // valid cipher
-        passwordProtectedCipher,
+        repromptCipher,
       ] as any[]);
 
       await sut.update("https://test.com");
@@ -122,10 +122,10 @@ describe("CipherContextMenuHandler", () => {
       );
 
       expect(mainContextMenuHandler.loadOptions).toHaveBeenCalledWith(
-        "Test Password Protected Cipher (Test Username)",
+        "Test Reprompt Cipher (Test Username)",
         "6",
         "https://test.com",
-        passwordProtectedCipher
+        repromptCipher
       );
     });
   });

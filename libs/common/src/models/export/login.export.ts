@@ -12,6 +12,7 @@ export class LoginExport {
     req.username = "jdoe";
     req.password = "myp@ssword123";
     req.totp = "JBSWY3DPEHPK3PXP";
+    req.fido2Key = Fido2KeyExport.template();
     return req;
   }
 
